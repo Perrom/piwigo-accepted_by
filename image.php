@@ -58,11 +58,7 @@ function accepted_by_add_image_vars_to_template()
 			$name = $row['name'];
 		}
 		// Sending data to the template
-    $template->assign(
-      array	(
-        'ACCEPTED_BY_NAME' => $name
-      )
-    );
+    $template->assign('ACCEPTED_BY_NAME', $name);
 	}
 }
 ?>

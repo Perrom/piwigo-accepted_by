@@ -6,7 +6,7 @@ add_event_handler('loc_begin_admin', 'accepted_by_set_prefilter_modify', 50 );
 add_event_handler('loc_begin_admin_page', 'accepted_by_modify_submit', 45 );
 
 // Change the variables used by the function that changes the template
-//add_event_handler('loc_begin_admin_page', 'accepted_by_add_modify_vars_to_template');
+add_event_handler('loc_begin_admin_page', 'accepted_by_add_modify_vars_to_template');
 
 function accepted_by_set_prefilter_modify()
 {
@@ -20,7 +20,11 @@ function accepted_by_modify($content)
 
 	$replacement = '<strong>{\'Accepted by\'}</strong>
 		<br>
-			<input type="text" id="acceptedByID" name="acceptedByID" maxlength="100" />
+			<input type="text" id="acceptedByID" name="acceptedByID" maxlength="100"
+{if $accepted_name}
+			value="{$accepted_name}"
+{/if}  		
+			/>
 		</p>
 	
 	</p>
@@ -31,7 +35,7 @@ function accepted_by_modify($content)
 }
 
 
-/*function accepted_by_add_modify_vars_to_template()
+function accepted_by_add_modify_vars_to_template()
 {
 	if (isset($_GET['page']) and 'photo' == $_GET['page'] and isset($_GET['image_id']))
 	{
@@ -45,11 +49,17 @@ function accepted_by_modify($content)
 			WHERE `accepted_by_id` = %d
 			;',
 			ACCEPTED_BY, $image_id);
-        $accepted_name = pwg_query($query);
-		
-		$template->assign('accepted_name', $accepted_name);
+			$result = pwg_query($query);
+			$row = pwg_db_fetch_assoc($result);
+			$name = '';
+			// Get the data from the chosen row
+			if (isset($row) and count($row) > 0) {
+				$name = $row['name'];
+			}
+			// Sending data to the template
+		$template->assign('accepted_name', $name);
 	}
-}*/
+}
 
 
 function accepted_by_modify_submit()
