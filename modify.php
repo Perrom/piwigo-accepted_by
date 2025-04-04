@@ -70,7 +70,7 @@ function accepted_by_modify_submit()
 		{
 			// The data from the submit
 			$image_id = $_GET['image_id'];
-			$AcceptedByid = $_POST['acceptedByID'];
+			$accepted_by_name = $_POST['acceptedByID'];
 
 			// Delete the name if there already is one
 			$query = sprintf(
@@ -82,13 +82,13 @@ function accepted_by_modify_submit()
 			pwg_query($query);
 
 			// If you assign no name, don't put it in the table
-			if ($AcceptedByid != '') {
+			if ($accepted_by_name != '') {
 				// Insert the name
 				$query = sprintf(
 					'INSERT INTO %s
 					VALUES (%d, "%s")
 					;',
-					ACCEPTED_BY, $image_id, $AcceptedByid);
+					ACCEPTED_BY, $image_id, $accepted_by_name);
 				pwg_query($query);
 			}
 		}

@@ -7,3 +7,5 @@ Projet réalisé dans le cadre d'un test de recrutement pour un poste de stagiai
 > * bonus 1 : pouvoir affecter/supprimer le champ par lot
 > * bonus 2 : pouvoir éditer/récupérer le champ via l'API
 > * bonus 3 : faire en sorte que le champ soit une liste (comme les tags, mais monovalué), au lieu d'être un simple champ libre.
+
+Le sujet initial et le premier bonus ont été incorporés.

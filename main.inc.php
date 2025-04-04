@@ -37,7 +37,7 @@ include_once(dirname(__FILE__).'/image.php');
 // Add the Accepted_by field to picture_modify
 include_once(dirname(__FILE__).'/modify.php');
 
-// Global mode
+// Global assignation mode
 include_once(dirname(__FILE__).'/batch_global.php');
 
 ?>
